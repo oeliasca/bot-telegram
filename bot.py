@@ -10,8 +10,8 @@ import os
 
 TOKEN = os.getenv("API_KEY")
 
-QUESTION = "Quin és el teu plat preferit?"
-OPTIONS = ["Pizza", "Pasta", "Sushi", "Amanida"]
+QUESTION = "WvW?"
+OPTIONS = ["Si", "No"]
 registered_chats = set()
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -38,7 +38,6 @@ def main():
     #job_queue.run_repeating(enviar_poll, interval=5, first=5)  # Cada 5 segons per proves
     job_queue.run_daily(enviar_poll, time=time(10, 0), days=(1, 3))  # Dimarts i dijous
 
-    print("Bot en marxa (amb proves cada 5 segons)...")
     app.run_polling()
 
 if __name__ == "__main__":
