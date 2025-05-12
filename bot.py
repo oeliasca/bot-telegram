@@ -17,7 +17,7 @@ registered_chats = set()
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     registered_chats.add(chat_id)
-    await update.message.reply_text("Aquest xat ha estat registrat per rebre enquestes.")
+    await update.message.reply_text("Este chat esta registrado para recibir enquestas.")
 
 async def enviar_poll(context: ContextTypes.DEFAULT_TYPE):
     for chat_id in registered_chats:
