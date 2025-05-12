@@ -157,8 +157,6 @@ async def help_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     """Display a help message"""
     await update.message.reply_text("Use /quiz, /poll or /preview to test this bot.")
 
-#async def periodic_call()->None:
-
 
 def main() -> None:
     """Run bot."""
@@ -169,12 +167,12 @@ def main() -> None:
     schedule.every(10).seconds.do(poll,application)
 
     #application.add_handler(CommandHandler("start", start))
-    application.add_handler(CommandHandler("poll", poll))
+    #application.add_handler(CommandHandler("poll", poll))
     #application.add_handler(CommandHandler("quiz", quiz))
     #application.add_handler(CommandHandler("preview", preview))
     #application.add_handler(CommandHandler("help", help_handler))
-    application.add_handler(MessageHandler(filters.POLL, receive_poll))
-    application.add_handler(PollAnswerHandler(receive_poll_answer))
+    #application.add_handler(MessageHandler(filters.POLL, receive_poll))
+    #application.add_handler(PollAnswerHandler(receive_poll_answer))
     #application.add_handler(PollHandler(receive_quiz_answer))
 
     # Run the bot until the user presses Ctrl-C
