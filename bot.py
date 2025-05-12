@@ -22,6 +22,9 @@ from telegram.ext import (
     filters,
 )
 
+# Xats registrats
+registered_chats = set()
+
 # Enable logging
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -41,6 +44,11 @@ TOTAL_VOTER_COUNT = 3
 #         "Please select /poll to get a Poll, /quiz to get a Quiz or /preview"
 #         " to generate a preview for your poll"
 #     )
+# /start per registrar xat
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    chat_id = update.effective_chat.id
+    registered_chats.add(chat_id)
+    await update.message.reply_text("Hola! Aquest xat ha estat registrat per rebre polls cada dimecres i divendres.")
 
 
 async def poll(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -157,7 +165,7 @@ def main() -> None:
     api_key = os.getenv('API_KEY')
     application = Application.builder().token(api_key).build()
 
-    schedule.every(10).seconds.do(poll)
+    schedule.every(10).seconds.do(poll,application)
 
     #application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("poll", poll))
