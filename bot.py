@@ -40,7 +40,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 def iniciar_schedule(app):
     #schedule.every().wednesday.at("10:00").do(scheduled_poll, app)
     #schedule.every().friday.at("10:00").do(scheduled_poll, app)
-    schedule.every(10).minutes.do(scheduled_poll, app)
+    schedule.every(10).seconds.do(scheduled_poll, app)
 
     def loop():
         while True:
