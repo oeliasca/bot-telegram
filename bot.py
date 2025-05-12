@@ -42,13 +42,13 @@ def iniciar_schedule(app):
     #schedule.every().friday.at("10:00").do(scheduled_poll, app)
     schedule.every(10).seconds.do(scheduled_poll, app)
 
-    def loop():
-        while True:
-            schedule.run_pending()
-            time.sleep(1)
-
-    thread = threading.Thread(target=loop, daemon=True)
-    thread.start()
+    # def loop():
+    #     while True:
+    #         schedule.run_pending()
+    #         time.sleep(1)
+    #
+    # thread = threading.Thread(target=loop, daemon=True)
+    # thread.start()
 
 # Inicia el bot
 def main():
